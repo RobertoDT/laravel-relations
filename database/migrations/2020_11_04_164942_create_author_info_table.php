@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAuthorsInfoTable extends Migration
+class CreateAuthorInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateAuthorsInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('authors_info', function (Blueprint $table) {
-            $table->foreignId('author_id')->constrained();
+        Schema::create('author_infos', function (Blueprint $table) {
+
+          $table->unsignedBigInteger('author_id');
+
+          $table->foreign('author_id')
+          ->references('id')
+          ->on('authors');
+
             $table->string("nationality", 50);
             $table->text("biography");
             $table->string("image")->default("http://via.placeholder.com/200x300");
@@ -29,6 +35,6 @@ class CreateAuthorsInfoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors_info');
+        Schema::dropIfExists('author_infos');
     }
 }

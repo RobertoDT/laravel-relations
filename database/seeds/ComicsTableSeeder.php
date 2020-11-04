@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 //includo il MODEL
 use App\Comic;
+use App\Author;
 
 //includo il faker generator
 use Faker\Generator as Faker;
@@ -17,11 +18,14 @@ class ComicsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 10; $i++) {
+      for ($i = 0; $i < 30; $i++) {
+
+        $author = Author::inRandomOrder()->first();
         //creo subito oggetto di tipo Comic(MODEl)
         $newComic = new Comic;
 
         //popolo le colonne ad ogni ciclo
+        $newComic->author_id = $author->id;
         $newComic->title = $faker->text(30);
         $newComic->number = $faker->numberBetween(1, 300);
         $newComic->edition = $faker->company();
