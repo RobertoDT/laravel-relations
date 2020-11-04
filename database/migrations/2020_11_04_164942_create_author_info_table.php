@@ -15,11 +15,11 @@ class CreateAuthorInfoTable extends Migration
     {
         Schema::create('author_infos', function (Blueprint $table) {
 
-          $table->unsignedBigInteger('author_id');
+            $table->unsignedBigInteger('author_id');
 
-          $table->foreign('author_id')
-          ->references('id')
-          ->on('authors');
+            $table->foreign('author_id')
+            ->references('id')
+            ->on('authors');
 
             $table->string("nationality", 50);
             $table->text("biography");

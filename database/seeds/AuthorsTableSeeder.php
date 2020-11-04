@@ -13,9 +13,9 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      $authors = Author::all();
+
       for ($i = 0; $i < 10 ; $i++) {
-        
+
         $newAuthor = new Author();
 
         $newAuthor->name = $faker->firstName();
